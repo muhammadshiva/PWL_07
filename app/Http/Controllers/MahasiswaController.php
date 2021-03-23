@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -13,9 +13,9 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswa = Mahasiswa::all(); // Mengambil semua isi tabel
+        $mahasiswas = Mahasiswa::all(); // Mengambil semua isi tabel
         $posts = Mahasiswa::orderBy('Nim','desc')->paginate(6);
-        return view('mahasiswa.index', compact('mahasiswa'));
+        return view('mahasiswa.index', compact('mahasiswas'));
         with('i',(request()->input('page', 1) - 1) * 5);
     }
 
@@ -27,7 +27,7 @@ class MahasiswaController extends Controller
     public function create()
     {
         return view('mahasiswa.create');
-    }
+    } 
 
     /**
      * Store a newly created resource in storage.

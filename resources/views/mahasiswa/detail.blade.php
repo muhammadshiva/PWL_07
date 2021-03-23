@@ -1,4 +1,4 @@
-@extends('mahasiswas.layout')
+@extends('mahasiswa.layout')
  
 @section('content')
 <div class="container mt-5">
@@ -16,7 +16,7 @@
                 <li class="list-groupitem"><b>No_Handphone: </b>{{$Mahasiswa->No_Handphone}}</li>
                 </ul>
             </div>
-        <a class="btn btn-success mt3" href="{{ route('mahasiswas.index') }}">Kembali</a>
+        <a class="btn btn-success mt3" href="{{ route('mahasiswass.index') }}">Kembali</a>
         </div>
     </div>
 </div>
