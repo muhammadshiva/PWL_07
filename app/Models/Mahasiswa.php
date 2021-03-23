@@ -21,6 +21,8 @@ class Mahasiswa extends Model{
         'kelas',
         'jurusan',
         'no_handphone',
+        'email',
+        'birthdate',
     ];
 
 }
