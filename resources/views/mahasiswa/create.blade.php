@@ -20,27 +20,27 @@
                     </ul>
                 </div>
             @endif
-            <form method="post" action="{{ route('mahasiswas.store') }}" id="myForm">
+            <form method="post" action="{{ route('mahasiswa.store') }}" id="myForm">
             @csrf
                 <div class="form-group">
-                    <label for="Nim">Nim</label> 
-                    <input type="text" name="Nim" class="formcontrol" id="Nim" aria-describedby="Nim" > 
+                    <label for="nim">Nim</label> 
+                    <input type="text" name="nim" class="form-control" id="nim" aria-describedby="nim" > 
                 </div>
                 <div class="form-group">
-                    <label for="Nama">Nama</label> 
-                    <input type="Nama" name="Nama" class="formcontrol" id="Nama" aria-describedby="Nama" > 
+                    <label for="nama">Nama</label> 
+                    <input type="nama" name="nama" class="form-control" id="nama" aria-describedby="nama" > 
                 </div>
                 <div class="form-group">
-                    <label for="Kelas">Kelas</label>  <input type="Kelas" name="Kelas" class="formcontrol" id="Kelas" aria-describedby="password" > 
+                    <label for="kelas">Kelas</label>  <input type="kelas" name="kelas" class="form-control" id="kelas" aria-describedby="password" > 
                 </div>
                 <div class="form-group">
-                    <label for="Jurusan">Jurusan</label> 
-                    <input type="Jurusan" name="Jurusan" class="formcontrol" id="Jurusan" aria-describedby="Jurusan" > 
+                    <label for="jurusan">Jurusan</label> 
+                    <input type="jurusan" name="jurusan" class="form-control" id="jurusan" aria-describedby="jurusan" > 
                 </div>
                 <div class="form-group">
-                    <label for="No_Handphone">No_Handphone</label> 
+                    <label for="no_handphone">No. Handphone</label> 
  
-                    <input type="No_Handphone" name="No_Handphone" class="formcontrol" id="No_Handphone" aria-describedby="No_Handphone" > 
+                    <input type="no_handphone" name="no_handphone" class="form-control" id="no_handphone" aria-describedby="no_handphone" > 
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

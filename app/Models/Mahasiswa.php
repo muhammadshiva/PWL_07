@@ -16,11 +16,11 @@ class Mahasiswa extends Model{
      */
 
     protected $fillable = [
-        'Nim',
-        'Nama',
-        'Kelas',
-        'Jurusan',
-        'No_Handphone',
+        'nim',
+        'nama',
+        'kelas',
+        'jurusan',
+        'no_handphone',
     ];
 
 }

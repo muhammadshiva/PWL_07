@@ -14,7 +14,7 @@ class MahasiswaController extends Controller
     public function index()
     {
         $mahasiswas = Mahasiswa::all(); // Mengambil semua isi tabel
-        $posts = Mahasiswa::orderBy('Nim','desc')->paginate(6);
+        $posts = Mahasiswa::orderBy('nim','desc')->paginate(6);
         return view('mahasiswa.index', compact('mahasiswas'));
         with('i',(request()->input('page', 1) - 1) * 5);
     }
@@ -39,11 +39,11 @@ class MahasiswaController extends Controller
     {
         // Melakukan validasi data 
         $request->validate([
-            'Nim' => 'required',
-            'Nama' => 'required',
-            'Kelas' => 'required',
-            'Jurusan' => 'required',
-            'No_Handphone' => 'required',
+            'nim' => 'required',
+            'nama' => 'required',
+            'kelas' => 'required',
+            'jurusan' => 'required',
+            'no_handphone' => 'required',
         ]);
 
         // Fungsi eloquent untuk menambah data 
@@ -60,9 +60,9 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($Nim)
+    public function show($nim)
     {
-        $Mahasiswa = Mahasiswa::find($Nim);
+        $Mahasiswa = Mahasiswa::find($nim);
         return view('mahasiswa.detail', compact('Mahasiswa'));
     }
 
@@ -72,10 +72,10 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($Nim)
+    public function edit($nim)
     {
-        // Menampilkan detail data dengan menemukan berdasarkan Nim Mahasiswa untuk diedit 
-        $Mahasiswa = Mahasiswa::find($Nim);
+        // Menampilkan detail data dengan menemukan berdasarkan nim Mahasiswa untuk diedit 
+        $Mahasiswa = Mahasiswa::find($nim);
         return view('mahasiswa.edit', compact('Mahasiswa'));
     }
 
@@ -86,19 +86,19 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $Nim)
+    public function update(Request $request, $nim)
     {
         // Melakukan validasi data 
         $request->validate([
-            'Nim' => 'required',
-            'Nama' => 'required',
-            'Kelas' => 'required',
-            'Jurusan' => 'required',
-            'No_Handphone' => 'required',
+            'nim' => 'required',
+            'nama' => 'required',
+            'kelas' => 'required',
+            'jurusan' => 'required',
+            'no_handphone' => 'required',
         ]);
 
         // Funsgi eloquent untuk mengupdate data inputan kita 
-        Mahasiswa::find($Nim)->update($request->all());
+        Mahasiswa::find($nim)->update($request->all());
 
         // Jika data berhasil diupdata, akan kembali ke halaman utama 
         return redirect()->route('mahasiswa.index')
@@ -111,9 +111,9 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($nim)
     {
-        Mahasiswa::find($Nim)->delete();
+        Mahasiswa::find($nim)->delete();
         return redirect()->route('mahasiswa.index')
             ->with('success', 'Mahasiswa Berhasil Dihapus');
     }
