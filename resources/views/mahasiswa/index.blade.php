@@ -18,35 +18,38 @@
         @endif
     
         <table class="table table-bordered">
-        <tr>
-            <th>Nim</th>
-            <th>Nama</th>
-            <th>Kelas</th>
-            <th>Jurusan</th>
-            <th>No. Handphone</th>
-            <th>Email</th>
-            <th>Tanggal lahir</th>
-            <th width="280px">Action</th>
-        </tr>
-        @foreach ($mahasiswas as $Mahasiswa)
-        <tr>
-            <td>{{ $Mahasiswa->nim }}</td>
-            <td>{{ $Mahasiswa->nama }}</td>
-            <td>{{ $Mahasiswa->kelas }}</td>
-            <td>{{ $Mahasiswa->jurusan }}</td>
-            <td>{{ $Mahasiswa->no_handphone }}</td>
-            <td>{{ $Mahasiswa->email }}</td>
-            <td>{{ $Mahasiswa->birthdate }}</td>
-            <td>
-            <form action="{{ route('mahasiswa.destroy',$Mahasiswa->nim) }}" method="POST">
-                <a class="btn btn-info" href="{{ route('mahasiswa.show',$Mahasiswa->nim) }}">Show</a>
-                <a class="btn btn-primary" href="{{ route('mahasiswa.edit',$Mahasiswa->nim) }}">Edit</a>
-                    @csrf 
-                    @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-            </td>
-        </tr>
-        @endforeach
-    </table>
+            <tr>
+                <th>Nim</th>
+                <th>Nama</th>
+                <th>Kelas</th>
+                <th>Jurusan</th>
+                <th>No. Handphone</th>
+                <th>Email</th>
+                <th>Tanggal lahir</th>
+                <th width="280px">Action</th>
+            </tr>
+            @foreach ($posts as $Mahasiswa)
+            <tr>
+                <td>{{ $Mahasiswa->nim }}</td>
+                <td>{{ $Mahasiswa->nama }}</td>
+                <td>{{ $Mahasiswa->kelas }}</td>
+                <td>{{ $Mahasiswa->jurusan }}</td>
+                <td>{{ $Mahasiswa->no_handphone }}</td>
+                <td>{{ $Mahasiswa->email }}</td>
+                <td>{{ $Mahasiswa->birthdate }}</td>
+                <td>
+                <form action="{{ route('mahasiswa.destroy',$Mahasiswa->nim) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('mahasiswa.show',$Mahasiswa->nim) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('mahasiswa.edit',$Mahasiswa->nim) }}">Edit</a>
+                        @csrf 
+                        @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                </td>
+            </tr>
+            @endforeach
+        </table>
+        <div class="d-flex float-none">
+            {{$posts->links('pagination::bootstrap-4')}}
+        </div>
 @endsection
