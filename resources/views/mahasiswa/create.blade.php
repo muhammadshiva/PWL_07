@@ -39,8 +39,15 @@
                 </div>
                 <div class="form-group">
                     <label for="no_handphone">No. Handphone</label> 
- 
                     <input type="no_handphone" name="no_handphone" class="form-control" id="no_handphone" aria-describedby="no_handphone" > 
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label> 
+                    <input type="email" name="email" class="form-control" id="email" aria-describedby="email" > 
+                </div>
+                <div class="form-group">
+                    <label for="birthdate">Tanggal Lahir (yyyy-mm-dd)</label> 
+                    <input type="birthdate" name="birthdate" class="form-control" id="birthdate" aria-describedby="birthdate" > 
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
