@@ -13,12 +13,32 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswas = Mahasiswa::all(); // Mengambil semua isi tabel
-        $posts = Mahasiswa::orderBy('nim', 'desc')->paginate(5);
-        return view('mahasiswa.index', compact('mahasiswas', 'posts'));
+        $search = request()->query('search');
+        if($search){
+            // Do the query search
+            $posts = Mahasiswa::where('nama', 'LIKE', "%{$search}%")->paginate(3);
+        } else {
+            // Show the mhs lists
+            $posts = Mahasiswa::orderBy('nim','desc')->paginate(5); 
+        }
+        // $mahasiswas = Mahasiswa::all(); // Mengambil semua isi tabel
+        // $posts = Mahasiswa::orderBy('nim', 'desc')->paginate(5);
+        return view('mahasiswa.index', compact('posts'));
         with('i',(request()->input('page', 1) - 1) * 5);
     }
 
+    public function cari(Request $request){
+        // Menangkap pencarian 
+        $cari = $request -> cari;
+
+        // Mengambil data dari table mahasiswa sesuai pencarian data
+        $mahasiswas = DB::table('mahasiswa')
+        ->where('nama','like',"%".$cari."%")
+        ->paginate();
+        
+        // Mengirim data mahasiswa ke view index
+        return view('find',['mahasiswas' => $mahasiswa]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -67,6 +87,8 @@ class MahasiswaController extends Controller
         $Mahasiswa = Mahasiswa::find($nim);
         return view('mahasiswa.detail', compact('Mahasiswa'));
     }
+
+    
 
     /**S
      * Show the form for editing the specified resource.
